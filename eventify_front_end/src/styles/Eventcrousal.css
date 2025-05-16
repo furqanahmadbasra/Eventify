@@ -1,0 +1,54 @@
+.sidebar_wrapper {
+    position: absolute;
+    top: 18%;
+    left: 2%;
+    height: 80%;
+    width: 2%; /* Collapsed width */
+    background-color: rgb(255, 255, 255);
+    border-top-right-radius: 14px;
+    border-top-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+    border-bottom-left-radius: 14px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease;
+    overflow: hidden; /* Ensures no content overflows */
+    align-items: center;
+    opacity: 0.6;
+}
+
+.sidebar_toggle {
+    font-size: 1.5rem;
+    border: none; /* Remove border */
+    outline: none; /* Remove any outline on focus */
+    cursor: pointer;
+    width: 100%; /* Fill full width */
+    text-align: center; /* Center the button */
+    padding: 5px 0; /* Adjust the padding to give space around the icon */
+    z-index: 10000;
+    background: transparent;
+    color: white;
+}
+
+.sidebar_toggle:focus {
+    outline: none;
+    border: none;
+}
+
+.sidebar_content {
+    flex-grow: 1; /* Take the remaining space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    gap: 10px;
+    padding: 10px 0;
+    display: none; /* Initially hidden */
+}
+
+.sidebar_wrapper.expanded .sidebar_content {
+    display: flex; /* Show content when expanded */
+}
+
+

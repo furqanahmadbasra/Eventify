@@ -1,0 +1,115 @@
+.events-container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.events-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #000;
+}
+
+.events-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1200px;
+  width: 100%;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 340px;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+.event-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #000;
+}
+
+.event-description,
+.event-date {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.button-group {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: -0.9rem;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.button-row {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 0.75rem;
+}
+
+.button-row .btn-delete,
+.button-row .btn-update {
+  flex: 1;
+  padding: 0.6rem 58px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+
+.btn-delete {
+  background-color: #dc2626;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #b91c1c;
+}
+
+.btn-update {
+  background-color: #2563eb;
+  color: white;
+}
+
+.btn-update:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-primary {
+  background-color: #1e3a8a;
+  color: white;
+  padding: 0.6rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1e40af;
+}

@@ -1,0 +1,594 @@
+/* Base Styles */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #becdd8, #ffffff);
+  }
+  
+  .main-content {
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Background Elements */
+  .bg-circle-1 {
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0) 70%);
+    animation: float 15s ease-in-out infinite;
+  }
+  
+  .bg-circle-2 {
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0) 70%);
+    animation: float 18s ease-in-out infinite reverse;
+  }
+  
+  .bg-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(rgba(203, 213, 225, 0.2) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(203, 213, 225, 0.2) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.5;
+    z-index: 1;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  .title-gradient {
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #64748b;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  /* Feature Cards */
+  .features-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  
+  .feature-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: white;
+    font-size: 1.5rem;
+  }
+  
+  .feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #1e293b;
+  }
+  
+  .feature-card p {
+    color: #64748b;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Navigation Buttons */
+  .nav-button {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(90deg, #3b82f6, #6366f1);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .button-icon {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .hover-grow:hover {
+    transform: scale(1.05);
+  }
+  
+  .hover-grow:hover .button-icon {
+    transform: translateX(3px);
+  }
+  
+  /* How It Works Section */
+  .how-it-works {
+    text-align: center;
+    margin-top: 4rem;
+  }
+  
+  .how-it-works h2 {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: #1e293b;
+  }
+  
+  .steps-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 200px;
+  }
+  
+  .step-number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .step-connector {
+    width: 50px;
+    height: 2px;
+    background: #cbd5e1;
+    position: relative;
+  }
+  
+  .step-connector::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #3b82f6;
+    animation: connector-fill 1s ease forwards;
+  }
+  
+  .step p {
+    color: #64748b;
+    text-align: center;
+  }
+  
+  /* Animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+  }
+  
+  @keyframes connector-fill {
+    to { width: 100%; }
+  }
+  
+  .animate-fade-in {
+    opacity: 0;
+    animation: fade-in 1s ease forwards;
+  }
+  
+  @keyframes fade-in {
+    to { opacity: 1; }
+  }
+  
+  .animate-slide-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slide-up 0.8s ease forwards;
+  }
+  
+  @keyframes slide-up {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .delay-100 {
+    animation-delay: 0.1s;
+  }
+  
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+  
+  .delay-300 {
+    animation-delay: 0.3s;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+    
+    .features-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .steps-container {
+      flex-direction: column;
+    }
+    
+    .step-connector {
+      width: 2px;
+      height: 50px;
+    }
+    
+    .step-connector::after {
+      width: 100%;
+      height: 0;
+      animation: connector-fill-vertical 1s ease forwards;
+    }
+    
+    @keyframes connector-fill-vertical {
+      to { height: 100%; }
+    }
+  }
+
+  /* Video Section */
+.video-section {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+.video-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  position: relative;
+}
+
+.video-placeholder {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.video-placeholder img {
+  width: 100%;
+  display: block;
+}
+
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  color: white;
+  background: rgba(0, 64, 128, 0.7);
+  border-radius: 50%;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.play-icon:hover {
+  background: rgba(0, 64, 128, 0.9);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-caption {
+  margin-top: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Advanced Features */
+.advanced-features {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.feature-item {
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #004080;
+}
+
+/* Testimonials */
+.testimonials {
+  margin: 4rem 0;
+  text-align: center;
+  background: #f9fafc;
+  padding: 3rem 0;
+}
+
+.testimonial-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.testimonial {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  max-width: 400px;
+  text-align: left;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+/* Upcoming Events */
+.upcoming-events {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+.event-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.event-card {
+  display: flex;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  max-width: 500px;
+}
+
+.event-date1 {
+  background: #004080;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+}
+
+.day {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.month {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.event-details {
+  padding: 1.5rem;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.event-button {
+  background: #004080;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.event-button:hover {
+  background: #002e5b;
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  margin: 4rem 0;
+  padding: 3rem 0;
+  background: linear-gradient(135deg, #004080, #002e5b);
+  color: white;
+  border-radius: 12px;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  padding: 0.8rem 2rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-button.primary {
+  background: white;
+  color: #004080;
+  border: 2px solid white;
+}
+
+.cta-button.primary:hover {
+  background: transparent;
+  color: white;
+}
+
+.cta-button.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.cta-button.secondary:hover {
+  background: white;
+  color: #004080;
+}
+
+/* Animations */
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.home-container {
+  position: relative;   /* allows layers inside to stack */
+  overflow: hidden;
+}
+
+/* Your background shapes */
+.bg-circle-1,
+.bg-circle-2,
+.bg-grid {
+  position: absolute;
+  z-index: 1;            /* at the back */
+}
+
+/* Particle canvas – use this class for particles */
+.tsparticles-canvas-el {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;            /* above background, below content */
+  width: 100%;
+  height: 100%;
+  pointer-events: none;  /* makes sure you can click buttons below */
+}
+
+/* Your main content (text, buttons, etc.) */
+.main-content {
+  position: relative;
+  z-index: 3;            /* top layer */
+}
+
+
+.home-page-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.home-container {
+  position: relative;
+  z-index: 3; /* Above particles */
+  padding: 2rem;
+}
+
+.main-content {
+  position: relative;
+  z-index: 3;
+}
+
+/* Ensure particles are in the background */
+#tsparticles {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none;
+}

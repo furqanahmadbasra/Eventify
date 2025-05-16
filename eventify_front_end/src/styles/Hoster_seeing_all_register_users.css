@@ -1,0 +1,96 @@
+/* Outer container for center alignment and background */
+.registered-users-outer {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background: linear-gradient(to right, #ffffff, #e0f7fa);
+  /* background: radial-gradient(circle at center, #becdd8, #ffffff); */
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Main container - 70% width */
+.registered-users-container {
+  width: 70%;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Heading */
+.registered-users-heading {
+  text-align: center;
+  /* color: #01579b; */
+  color: radial-gradient(circle at center, #becdd8, #ffffff);
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+/* Info text */
+.registered-users-info {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0277bd;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Search input styling */
+.registered-users-search {
+  display: block;
+  margin: 0 auto 20px auto;
+  padding: 10px 15px;
+  width: 300px;
+  border: 1px solid #b3e5fc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* Scrollable wrapper for table */
+.registered-users-table-wrapper {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #cce7f9;
+  border-radius: 10px;
+}
+
+/* Table styling */
+.registered-users-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.registered-users-table th,
+.registered-users-table td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid #e3f2fd;
+}
+
+.registered-users-table th {
+  background: #e1f5fe;
+  color: #0277bd;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* Profile image */
+.registered-users-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Loading and error messages */
+.registered-users-loading,
+.registered-users-error {
+  text-align: center;
+  font-size: 18px;
+  color: #d32f2f;
+  margin-top: 30px;
+}

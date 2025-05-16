@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+}
+
+.login__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login__form-wrapper {
+  background-color: #ffffff;
+  max-width: 430px;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 7px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.login__header {
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__input {
+  height: 60px;
+  width: 100%;
+  padding: 0 15px;
+  font-size: 16px;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.login__input:focus {
+  border-color: #004080;
+  box-shadow: 0 0 5px rgba(0, 64, 128, 0.2);
+  outline: none;
+}
+
+.login__forgot-link {
+  font-size: 0.95rem;
+  color: #004080;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  align-self: flex-end;
+}
+
+.login__forgot-link:hover {
+  text-decoration: underline;
+}
+
+.login__submit-btn {
+  background: linear-gradient(135deg, #004080, #002e5b);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.4s;
+  margin-top: 1rem;
+}
+
+.login__submit-btn:hover {
+  background: linear-gradient(135deg, #005fa3, #004080);
+}
+
+.login__footer {
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.login__signup-link {
+  color: #004080;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login__signup-link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,96 @@
+/* Root Container */
+.startup-form__container {
+  padding: 2rem 1rem;
+}
+
+/* Card Styling */
+.startup-form__card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.startup-form__header {
+  background-color: #004080;
+  color: #fff;
+  padding: 1rem 1.5rem;
+}
+
+.startup-form__title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+/* Section Titles */
+.startup-form__section-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  border-bottom: 2px solid #004080;
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+/* Labels and Inputs */
+.startup-form__label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.startup-form__input,
+.startup-form__textarea,
+.startup-form__file-input {
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.startup-form__input:focus,
+.startup-form__textarea:focus,
+.startup-form__file-input:focus {
+  border-color: #004080;
+  box-shadow: 0 0 5px rgba(0, 64, 128, 0.2);
+  outline: none;
+}
+
+/* Textarea Styling */
+.startup-form__textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* File Info Text */
+.startup-form__file-name {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+/* Buttons */
+.startup-form__button-group .btn {
+  min-width: 120px;
+}
+
+.startup-form__add-team-btn {
+  margin-top: 0.75rem;
+}
+
+/* Add subtle hover effect */
+.startup-form__add-team-btn:hover,
+.startup-form__button-group .btn:hover {
+  opacity: 0.9;
+}
+
+/* Responsive Spacing */
+@media (max-width: 768px) {
+  .startup-form__section-title {
+    font-size: 1.1rem;
+  }
+
+  .startup-form__title {
+    font-size: 1.5rem;
+  }
+}
