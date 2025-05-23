@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import "../styles/CreateStartupPage.css"
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import "../styles/CreateStartupPage.css";
 import imageCompression from 'browser-image-compression';
 
-
 function CreateStartupPage() {
+  // Navigation and state
   const navigate = useNavigate();
+  const { state } = useLocation();
+  
+  // Form state
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -26,6 +31,37 @@ function CreateStartupPage() {
     productImages: []
   });
 
+  // Initialize form based on mode
+  useEffect(() => {
+    if (state?.isEditMode && state.startupData) {
+      setIsEditMode(true);
+      initializeFormData(state.startupData);
+    }
+  }, [state]);
+
+  const initializeFormData = (startupData) => {
+    setFormData({
+      name: startupData.name || '',
+      description: startupData.description || '',
+      industry: startupData.industry || '',
+      stage: startupData.stage || 'Ideation',
+      website: startupData.website || '',
+      foundedDate: startupData.foundedDate || '',
+      businessModel: startupData.businessModel || '',
+      problemStatement: startupData.problemStatement || '',
+      solution: startupData.solution || '',
+      targetMarket: startupData.targetMarket || '',
+      competitors: startupData.competitors || '',
+      revenueModel: startupData.revenueModel || '',
+      fundingNeeds: startupData.fundingNeeds || '',
+      team: startupData.team?.length > 0 ? startupData.team : [{ name: '', role: '' }],
+      logo: startupData.logo ? { url: startupData.logo } : null,
+      pitchDeck: startupData.pitchDeck ? { url: startupData.pitchDeck } : null,
+      productImages: startupData.productImages || []
+    });
+  };
+
+  // Form handlers
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -55,106 +91,94 @@ function CreateStartupPage() {
     setFormData(prev => ({ ...prev, team: updatedTeam }));
   };
 
-      const handleImageUpload = async (fileOrBase64) => {
-          try {
-              // If it's already a base64 string, return it directly
-              if (typeof fileOrBase64 === 'string' && fileOrBase64.startsWith('data:image/')) {
-                  return fileOrBase64;
-              }
-  
-              // Otherwise, assume it's a File and compress it
-              const compressedFile = await imageCompression(fileOrBase64, {
-                  maxSizeMB: 0.2,
-                  maxWidthOrHeight: 800,
-                  useWebWorker: true,
-              });
-  
-              const base64Image = await convertToBase64(compressedFile);
-              return base64Image;
-          } catch (error) {
-              console.error("Image processing failed:", error);
-              return null;
-          }
-      };
-  
+  // File conversion utilities
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+  };
 
-      const convertToBase64 = (file) => {
-          return new Promise((resolve, reject) => {
-              const reader = new FileReader();
-              reader.readAsDataURL(file);
-  
-              reader.onload = () => {
-                  // console.log("reader result:", reader.result);  // Should show Base64 string
-                  resolve(reader.result);
-              };
-  
-              reader.onerror = (error) => {
-                  console.error("FileReader error:", error);
-                  reject(error);
-              };
-          });
-      };
+  const handleImageUpload = async (fileOrBase64) => {
+    try {
+      if (typeof fileOrBase64 === 'string' && fileOrBase64.startsWith('data:image/')) {
+        return fileOrBase64;
+      }
+      const compressedFile = await imageCompression(fileOrBase64, {
+        maxSizeMB: 0.2,
+        maxWidthOrHeight: 800,
+        useWebWorker: true,
+      });
+      return await convertToBase64(compressedFile);
+    } catch (error) {
+      console.error("Image processing failed:", error);
+      return null;
+    }
+  };
 
-
+  // Form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Startup created:', formData);
+    setIsLoading(true);
 
     try {
-      // Convert logo to Base64 if it's present
-      if (formData.logo) {
-        const base64Logo = await handleImageUpload(formData.logo);
-        if (base64Logo) {
-          formData.logo = base64Logo;
-        } else {
-          alert("Failed to convert logo to Base64.");
-          return;
-        }
+      // Prepare submission data
+      const submissionData = { ...formData };
+
+      // Process files
+      if (formData.logo && formData.logo instanceof File) {
+        submissionData.logo = await handleImageUpload(formData.logo);
+      } else if (formData.logo?.url) {
+        submissionData.logo = formData.logo.url;
       }
 
-      // Convert pitchDeck to Base64 if it's present
-      if (formData.pitchDeck) {
-        const base64PitchDeck = await convertToBase64(formData.pitchDeck);
-        if (base64PitchDeck) {
-          formData.pitchDeck = base64PitchDeck;
-        } else {
-          alert("Failed to convert pitch deck to Base64.");
-          return;
-        }
+      if (formData.pitchDeck && formData.pitchDeck instanceof File) {
+        submissionData.pitchDeck = await convertToBase64(formData.pitchDeck);
+      } else if (formData.pitchDeck?.url) {
+        submissionData.pitchDeck = formData.pitchDeck.url;
       }
 
-      // Convert all productImages to Base64 if they exist
-      if (Array.isArray(formData.productImages)) {
-        const base64Images = await Promise.all(
-          formData.productImages.map(async (img) => {
-            const result = await handleImageUpload(img);
-            return result || null;
+      if (formData.productImages.length > 0) {
+        submissionData.productImages = await Promise.all(
+          formData.productImages.map(async img => {
+            return img instanceof File ? await handleImageUpload(img) : img;
           })
         );
-        formData.productImages = base64Images.filter(img => img !== null);
       }
 
-      console.log("wee....................")
+      // API call
+      const url = isEditMode
+        ? `http://localhost:5000/api/startup/UpdateStartup/${state.startupData._id}`
+        : 'http://localhost:5000/api/startup/postStartup';
 
-      // Send the data to the backend
-      const response = await fetch('http://localhost:5000/api/startup/postStartup', {
-        method: 'POST',
+      const method = isEditMode ? 'PUT' : 'POST';
+
+      const response = await fetch(url, {
+        method,
         headers: {
-          "Content-Type": "application/json", // Indicate JSON data
+          "Content-Type": "application/json",
           "auth-token": localStorage.getItem("token"),
         },
-        body: JSON.stringify(formData), // Send the form data as JSON
+        body: JSON.stringify(submissionData),
       });
 
-      if (response.ok) {
-        alert("Startup posted successfully");
-        navigate('/startup');
-      } else {
-        alert("Failed to post startup.");
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Operation failed');
       }
+
+      const result = await response.json();
+      alert(`Startup ${isEditMode ? 'updated' : 'created'} successfully!`);
+      navigate(state?.returnPath || `/startup`, {
+        state: { startupData: result }
+      });
     } catch (error) {
-      console.error('Error posting startup:', error);
-      alert("There was an error posting the startup.");
+      console.error('Error:', error);
+      alert(error.message || "Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -165,7 +189,9 @@ function CreateStartupPage() {
         <div className="startup-form__column col-lg-8">
           <div className="startup-form__card card shadow">
             <div className="startup-form__header card-header">
-              <h2 className="startup-form__title">Create New Startup</h2>
+              <h2 className="startup-form__title">
+                {isEditMode ? 'Edit Startup' : 'Create New Startup'}
+              </h2>
             </div>
             <div className="startup-form__body card-body">
               <form onSubmit={handleSubmit} className="startup-form__form">
@@ -385,8 +411,8 @@ function CreateStartupPage() {
                   >
                     Cancel
                   </button>
-                  <button type="submit" className="btn btn-primary">
-                    Create Startup
+                  <button type="submit" className="btn btn-primary" disabled={isLoading}>
+                    {isLoading ? 'Processing...' : (isEditMode ? 'Update Startup' : 'Create Startup')}
                   </button>
                 </div>
 

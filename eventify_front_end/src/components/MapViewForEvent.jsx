@@ -78,6 +78,8 @@ const MapViewForEvent = ({ onMapClick }) => {
                 .bindPopup(`Latitude: ${lat.toFixed(6)}, Longitude: ${lng.toFixed(6)}`)
                 .openPopup();
             });
+
+            
           }
         },
         { enableHighAccuracy: true }

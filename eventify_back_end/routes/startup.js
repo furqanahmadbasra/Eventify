@@ -131,14 +131,25 @@ router.delete("/DeleteStartup/:id", fetchuser, async (req, res) => {
   }
 });
 
-
-
-
-
-
-
-
-
+// Update Startup
+router.put('/UpdateStartup/:id', fetchuser, async (req, res) => {
+  try {
+    const updatedStartup = await Startup.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true } // Return the updated document
+    );
+    
+    if (!updatedStartup) {
+      return res.status(404).json({ message: "Startup not found" });
+    }
+    
+    res.json(updatedStartup);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
 
 
 

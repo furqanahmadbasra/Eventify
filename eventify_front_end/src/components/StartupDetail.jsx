@@ -1,6 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function StartupDetail({ startup, onClose, userRole }) {
+
+  const navigate = useNavigate();
+
+    const handleUpdate = () => {
+      navigate('/create-startup', {
+        state: { 
+          startupData: startup,
+          isEditMode: true,
+          returnPath: `/startup` // Where to return after update
+        }
+      });
+    };
 
   const handleDelete = async () => {
 
@@ -72,7 +85,7 @@ function StartupDetail({ startup, onClose, userRole }) {
           {/* Conditional Buttons */}
           {userRole === "owner" ? (
             <>
-              <button className="btn btn-primary">Update</button>
+              <button onClick={handleUpdate} className="btn btn-primary">Update</button>
               <button onClick={handleDelete} className="btn btn-danger">Delete</button>
             </>
           ) : (

@@ -20,8 +20,10 @@ const EventSchema = new Schema(
         // startTime: { type: String },
         endTime: { type: String },
 
-        country: { type: String, required: true },
-        city: { type: String, required: true },
+        // country: { type: String, required: true },
+        country: { type: String},
+        city: { type: String},
+        // city: { type: String, required: true },
         mode: {
             type: String,
             enum: ["Online", "Offline", "Hybrid"],
@@ -73,7 +75,8 @@ const EventSchema = new Schema(
         },
         price: { type: Number, required: true },
         seatsAvailable: { type: Number, required: true },
-        location: { type: String, required: true },
+        location: { type: String },
+        // location: { type: String, required: true },
 
         // sortingBy: { type: String, required: true },// we are not gona store this value in db 
 

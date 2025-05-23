@@ -43,7 +43,7 @@ const App = () => {
           <Route path="/AllEventsRegisteredByUser" element={<AllEventsRegisteredByUser />} />
           <Route path="/AllEventsHostedByUser" element={<AllEventsHostedByUser />} />
           <Route exact path="/startup" element={<StartUp />} />
-          <Route exact path="/create-startup" element={<CreateStartupPage />} />
+          <Route exact path="/create-startup" element={<CreateStartupPage />} />  
           <Route exact path="/Hoster_seeing_all_register_users/:eventId" element={<Hoster_seeing_all_register_users/>} />
 
         </Routes>

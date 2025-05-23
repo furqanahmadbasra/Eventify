@@ -105,4 +105,3 @@ const AllEventsRegisteredByUser = () => {
 };
 
 export default AllEventsRegisteredByUser;
-

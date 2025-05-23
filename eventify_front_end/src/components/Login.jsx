@@ -59,8 +59,6 @@ const Login = () => {
             required
           />
 
-          <a href="#" className="login__forgot-link">Forgot password?</a>
-
           <input
             type="submit"
             className="login__submit-btn"

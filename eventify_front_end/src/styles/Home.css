@@ -213,6 +213,36 @@
     color: #64748b;
     text-align: center;
   }
+
+.video-container {
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.video-player, .video-embed {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+}
+
+.video-embed iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.play-icon {
+  font-size: 4rem;
+  color: white;
+}
+
+.video-caption {
+  margin-top: 1rem;
+  text-align: center;
+  color: #666;
+}
   
   /* Animations */
   @keyframes float {

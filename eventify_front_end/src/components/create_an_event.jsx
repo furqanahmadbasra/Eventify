@@ -1,15 +1,9 @@
-
-
-
 import React, { useState } from 'react';
 import '../styles/create_an_event.css';
 import MapViewForEvent from './MapViewForEvent';
 import { addEvent } from '../utils/addEvent';
 
 const CreateAnEvent = () => {
-
-
-
   const [eventData, setEventData] = useState({
     title: '',
     description: '',
@@ -36,12 +30,8 @@ const CreateAnEvent = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
-    // If the input is a file input, use files[0]
     const newValue = type === 'checkbox' ? checked : type === 'file' ? files[0] : value;
-    setEventData({
-      ...eventData,
-      [name]: newValue
-    });
+    setEventData({ ...eventData, [name]: newValue });
   };
 
   const handleMapClick = async (lat, lng) => {
@@ -51,21 +41,15 @@ const CreateAnEvent = () => {
       longitude: lng.toFixed(6)
     }));
 
-    // Reverse geocoding to get city, country, and location
     const apiKey = '28c78ff8609a460893826748b2e6d0d1';
     try {
       const response = await fetch(
         `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lng}&key=${apiKey}`
       );
       const data = await response.json();
-
-      // console.log('Reverse Geocoding API Response:', data);
-
       if (data.results && data.results.length > 0) {
         const { city, country } = data.results[0].components;
         const formatted = data.results[0].formatted;
-        // console.log('Formatted Address:', formatted);
-
         setEventData((prevData) => ({
           ...prevData,
           city: city || '',
@@ -82,10 +66,7 @@ const CreateAnEvent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log('Submitted Event:', eventData);
-
     addEvent(eventData);
-
     setEventData({
       title: '',
       description: '',
@@ -112,24 +93,20 @@ const CreateAnEvent = () => {
     });
   };
 
-  // const today = new Date().toISOString().split("T")[0];
-
   const maxDate = new Date();
   maxDate.setDate(maxDate.getDate() + 90);
   const max = maxDate.toISOString().split("T")[0];
 
   const today_ = new Date();
   const yyyy = today_.getFullYear();
-const mm = String(today_.getMonth() + 1).padStart(2, '0');
-const dd = String(today_.getDate()).padStart(2, '0');
-const todayStr = `${yyyy}-${mm}-${dd}`;
-
+  const mm = String(today_.getMonth() + 1).padStart(2, '0');
+  const dd = String(today_.getDate()).padStart(2, '0');
+  const todayStr = `${yyyy}-${mm}-${dd}`;
 
   return (
     <div className="create-event-container">
       <h2 className="create-event-title">Create an Event</h2>
       <form onSubmit={handleSubmit} className="create-event-form">
-
         <input
           type="text"
           id="title"
@@ -150,16 +127,6 @@ const todayStr = `${yyyy}-${mm}-${dd}`;
         ></textarea>
 
         <label>Event Date:</label>
-        {/* <input
-          type="date"
-          id="date"
-          name="date"
-          value={eventData.date}
-          onChange={handleChange}
-          required
-          min={today}
-        /> */}
-
         <input
           type="date"
           id="date"
@@ -191,59 +158,76 @@ const todayStr = `${yyyy}-${mm}-${dd}`;
           required
         />
 
-        <input
-          type="text"
-          id="location"
-          name="location"
-          placeholder="Location"
-          value={eventData.location}
+        <select
+          id="mode"
+          name="mode"
+          value={eventData.mode}
           onChange={handleChange}
-          readOnly
-        />
+          required
+        >
+          <option value="">Select Mode</option>
+          <option value="Online">Online</option>
+          <option value="Offline">Offline</option>
+          <option value="Hybrid">Hybrid</option>
+        </select>
 
-        <input
-          type="text"
-          id="latitude"
-          name="latitude"
-          placeholder="Latitude"
-          value={eventData.latitude}
-          onChange={handleChange}
-          readOnly
-        />
+        {eventData.mode !== 'Online' && (
+          <>
+            <input
+              type="text"
+              id="location"
+              name="location"
+              placeholder="Location"
+              value={eventData.location}
+              onChange={handleChange}
+              readOnly
+            />
 
-        <input
-          type="text"
-          id="longitude"
-          name="longitude"
-          placeholder="Longitude"
-          value={eventData.longitude}
-          onChange={handleChange}
-          readOnly
-        />
+            <input
+              type="text"
+              id="latitude"
+              name="latitude"
+              placeholder="Latitude"
+              value={eventData.latitude}
+              onChange={handleChange}
+              readOnly
+            />
 
-        <input
-          type="text"
-          id="city"
-          name="city"
-          placeholder="City"
-          value={eventData.city}
-          onChange={handleChange}
-          readOnly
-        />
+            <input
+              type="text"
+              id="longitude"
+              name="longitude"
+              placeholder="Longitude"
+              value={eventData.longitude}
+              onChange={handleChange}
+              readOnly
+            />
 
-        <input
-          type="text"
-          id="country"
-          name="country"
-          placeholder="Country"
-          value={eventData.country}
-          onChange={handleChange}
-          readOnly
-        />
+            <input
+              type="text"
+              id="city"
+              name="city"
+              placeholder="City"
+              value={eventData.city}
+              onChange={handleChange}
+              readOnly
+            />
 
-        <div className="map-container">
-          <MapViewForEvent onMapClick={handleMapClick} />
-        </div>
+            <input
+              type="text"
+              id="country"
+              name="country"
+              placeholder="Country"
+              value={eventData.country}
+              onChange={handleChange}
+              readOnly
+            />
+
+            <div className="map-container">
+              <MapViewForEvent onMapClick={handleMapClick} />
+            </div>
+          </>
+        )}
 
         <select
           id="category"
@@ -330,19 +314,6 @@ const todayStr = `${yyyy}-${mm}-${dd}`;
           <option value="Investors">Investors</option>
         </select>
 
-        <select
-          id="mode"
-          name="mode"
-          value={eventData.mode}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select Mode</option>
-          <option value="Online">Online</option>
-          <option value="Offline">Offline</option>
-          <option value="Hybrid">Hybrid</option>
-        </select>
-
         <input
           type="text"
           id="eventLink"
@@ -351,6 +322,7 @@ const todayStr = `${yyyy}-${mm}-${dd}`;
           value={eventData.eventLink}
           onChange={handleChange}
         />
+
         <input
           type="text"
           id="contactInfo"
@@ -359,6 +331,7 @@ const todayStr = `${yyyy}-${mm}-${dd}`;
           value={eventData.contactInfo}
           onChange={handleChange}
         />
+
         <label>Upload Event Image:</label>
         <input
           type="file"
@@ -367,11 +340,13 @@ const todayStr = `${yyyy}-${mm}-${dd}`;
           onChange={handleChange}
           accept="image/*"
         />
+
         <input
           type="hidden"
           name="host_user_id"
           value={eventData.host_user_id}
         />
+
         <button type="submit" className="create-event-button">Create Event</button>
       </form>
     </div>

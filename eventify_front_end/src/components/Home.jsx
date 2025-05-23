@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
-       <ParticleBackground /> {/* ✅ Always placed here */}
+       <ParticleBackground /> {/* Always placed here */}
       {/* Animated Background Elements */}
       <div className="bg-circle-1"></div>
       <div className="bg-circle-2"></div>
@@ -91,11 +91,16 @@ const Home = () => {
         <div className="video-section animate-fade-in">
           <h2>See Eventify in Action</h2>
           <div className="video-container">
-            <div className="video-placeholder">
-              <FiPlay className="play-icon" />
-              <img src="/eventify-preview.jpg" alt="Eventify platform preview" />
-            </div>
-            <p className="video-caption">Watch our 2-minute demo to see how Eventify can transform your event experience</p>
+            <video 
+              controls 
+              className="video-player"
+            >
+              <source src="/video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p className="video-caption">
+              Watch our to see how Eventify can transform your event experience
+            </p>
           </div>
         </div>
 

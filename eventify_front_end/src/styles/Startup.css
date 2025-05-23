@@ -50,7 +50,24 @@
 
 .btn-primary:hover {
   background: linear-gradient(135deg, #3a5a80, #2e4662);
-  transform: scale(1.05);
+  transform: scale(1.02);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #c56053, #da501a);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  margin: 15px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-dannger:hover {
+  background: linear-gradient(135deg, #c96c50, #db7264);
+  transform: scale(1.02);
 }
 
 /* Left Panel */

@@ -1,7 +1,6 @@
 
 .site-footer {
-  background: linear-gradient(135deg, #292d33, #3f4553);
-  color: #e2e8f0;
+  background: linear-gradient(135deg, #53585f, #282d3a);
   padding: 4rem 2rem 2rem;
   position: relative;
   font-size: 0.95rem;
@@ -68,7 +67,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #e2e8f0;
+  color: #272829;
   font-size: 1.2rem;
   transition: all 0.3s ease;
 }
@@ -90,7 +89,7 @@
 }
 
 .footer-links a {
-  color: #94a3b8;
+  color: #292b2e;
   text-decoration: none;
   transition: color 0.3s ease;
 }

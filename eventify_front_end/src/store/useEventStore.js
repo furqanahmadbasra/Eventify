@@ -102,12 +102,62 @@ const useEventStore = create((set) => ({
       });
 
       const data = await response.json();
-      // console.log("Filtered Events:", data);
+      console.log("Filtered Events:", data);
       set({ eventResults: data });
     } catch (err) {
       console.error("Error fetching events:", err);
     }
   }
+
+
+
+  // fetchEventsByFilters: async (filters) => {
+  //   let currentPage = 1;
+  //   const limit = 5; // number of events to fetch per request
+  //   const allEvents = [];
+
+  //   const fetchNextChunk = async () => {
+  //     const params = new URLSearchParams({ ...filters, page: currentPage, limit });
+  //     const url = `http://localhost:5000/api/event/getEvents?${params.toString()}`;
+
+  //     try {
+  //       const response = await fetch(url, {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           "auth-token": localStorage.getItem('token'),
+  //         },
+  //       });
+
+  //       const data = await response.json();
+
+  //       if (!data || data.length === 0) {
+  //         return; // Stop when no more data
+  //       }
+
+  //       allEvents.push(...data);
+
+  //       // Set partial results to update map
+  //       set((state) => ({
+  //         eventResults: [...state.eventResults, ...data],
+  //       }));
+
+  //       currentPage++;
+
+  //       // Fetch next chunk after short delay
+  //       setTimeout(fetchNextChunk, 300); // adjust delay as needed
+  //     } catch (err) {
+  //       console.error("Error fetching chunk:", err);
+  //     }
+  //   };
+
+  //   // Reset previous results
+  //   set({ eventResults: [] });
+
+  //   // Start fetching
+  //   fetchNextChunk();
+  // }
+
 
 
 }));
