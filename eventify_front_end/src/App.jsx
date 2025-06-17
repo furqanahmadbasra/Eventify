@@ -7,8 +7,10 @@ import {
 } from "react-router-dom";
 
 import Navbar from "./components/Navbar"
-import Signup from "./components/signup"
-import Login from './components/login';
+// import Signup from "./components/signup"
+// import Login from './components/login';
+import Signup from "./components/Signup"
+import Login from './components/Login';
 import Eventlookup from './components/Eventlookup';
 import EventRegistrationByUser from "./components/EventRegistrationByUser"
 import HostAnEvent from './components/host_an_event';
