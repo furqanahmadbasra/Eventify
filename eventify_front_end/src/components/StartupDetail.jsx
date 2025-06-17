@@ -19,7 +19,7 @@ function StartupDetail({ startup, onClose, userRole }) {
 
     // console.log("we are mmm" , startup._id);
     try {
-      const response = await fetch(`http://localhost:5000/api/startup/DeleteStartup/${startup._id}`, {
+      const response = await fetch(`https://eventify-ymsb.vercel.app/api/startup/DeleteStartup/${startup._id}`, {
         method: 'DELETE',
         headers: {
           "Content-Type": "application/json", // This tells the server we're sending JSON

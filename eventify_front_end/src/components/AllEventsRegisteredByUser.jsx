@@ -10,7 +10,7 @@ const AllEventsRegisteredByUser = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/event/registeredEventsByUser', {
+                const response = await fetch('https://eventify-ymsb.vercel.app/api/event/registeredEventsByUser', {
                     method: 'GET',
                     headers: {
                         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ const AllEventsRegisteredByUser = () => {
         console.log("we are truing to delte te data ")
         try {
 
-            const response = await fetch(`http://localhost:5000/api/event/cancel-registration/${eventId}`, {
+            const response = await fetch(`https://eventify-ymsb.vercel.app/api/event/cancel-registration/${eventId}`, {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json",

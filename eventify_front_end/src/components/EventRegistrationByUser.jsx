@@ -14,7 +14,7 @@ const EventRegistrationByUser = () => {
 
   const handleRegister = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/event/register/${event._id}`, {
+      const response = await fetch(`https://eventify-ymsb.vercel.app/api/event/register/${event._id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

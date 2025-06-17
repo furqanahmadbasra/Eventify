@@ -13,7 +13,7 @@ const Hoster_seeing_all_register_users = () => {
   useEffect(() => {
     const fetchRegisteredUsers = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/event/AllRegisteredUsers/${eventId}`, {
+        const res = await fetch(`https://eventify-ymsb.vercel.app/api/event/AllRegisteredUsers/${eventId}`, {
           headers: {
             'auth-token': localStorage.getItem('token'),
           },

@@ -150,8 +150,8 @@ function CreateStartupPage() {
 
       // API call
       const url = isEditMode
-        ? `http://localhost:5000/api/startup/UpdateStartup/${state.startupData._id}`
-        : 'http://localhost:5000/api/startup/postStartup';
+        ? `https://eventify-ymsb.vercel.app/api/startup/UpdateStartup/${state.startupData._id}`
+        : 'https://eventify-ymsb.vercel.app/api/startup/postStartup';
 
       const method = isEditMode ? 'PUT' : 'POST';
 

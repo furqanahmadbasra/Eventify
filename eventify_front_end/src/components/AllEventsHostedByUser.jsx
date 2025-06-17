@@ -21,7 +21,7 @@
 
 //     const fetchHostedEvents = async () => {
 //         try {
-//             const res = await fetch('http://localhost:5000/api/event/hosted', {
+//             const res = await fetch('https://eventify-ymsb.vercel.app/api/event/hosted', {
 //                 headers: {
 //                     'auth-token': localStorage.getItem('token'),
 //                 },
@@ -36,7 +36,7 @@
 
 //     const handleDelete = async (eventId) => {
 //         try {
-//             await fetch(`http://localhost:5000/api/event/delete/${eventId}`, {
+//             await fetch(`https://eventify-ymsb.vercel.app/api/event/delete/${eventId}`, {
 //                 method: 'DELETE',
 //                 headers: {
 //                     'auth-token': localStorage.getItem('token'),
@@ -126,7 +126,7 @@ const AllEventsHostedByUser = () => {
 
     const fetchHostedEvents = async () => {
         try {
-            const res = await fetch('http://localhost:5000/api/event/hosted', {
+            const res = await fetch('https://eventify-ymsb.vercel.app/api/event/hosted', {
                 headers: {
                     'auth-token': localStorage.getItem('token'),
                 },
@@ -141,7 +141,7 @@ const AllEventsHostedByUser = () => {
 
     const handleDelete = async (eventId) => {
         try {
-            await fetch(`http://localhost:5000/api/event/delete/${eventId}`, {
+            await fetch(`https://eventify-ymsb.vercel.app/api/event/delete/${eventId}`, {
                 method: 'DELETE',
                 headers: {
                     'auth-token': localStorage.getItem('token'),

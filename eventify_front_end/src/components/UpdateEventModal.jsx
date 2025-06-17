@@ -50,7 +50,7 @@ const UpdateEventModal = ({ event, onClose, onSave }) => {
                 body.image = base64;
             }
 
-            const response = await fetch(`http://localhost:5000/api/event/update_The_Event/${event._id}`, {
+            const response = await fetch(`https://eventify-ymsb.vercel.app/api/event/update_The_Event/${event._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

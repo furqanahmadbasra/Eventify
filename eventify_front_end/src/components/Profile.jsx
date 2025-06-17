@@ -199,7 +199,7 @@ const Profile = () => {
         try {
 
 
-            const response = await fetch('http://localhost:5000/api/user/profile', {
+            const response = await fetch('https://eventify-ymsb.vercel.app/api/user/profile', {
                 method: 'POST',  // or 'PUT' if updating
                 headers: {
                     "Content-Type": "application/json", // This tells the server we're sending JSON
@@ -258,7 +258,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/user/profileInfo', {
+                const response = await fetch('https://eventify-ymsb.vercel.app/api/user/profileInfo', {
                     method: 'GET',
                     headers: {
                         'auth-token': localStorage.getItem('token'),

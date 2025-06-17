@@ -90,7 +90,7 @@ const useEventStore = create((set) => ({
 
   fetchEventsByFilters: async (filters) => {
     const params = new URLSearchParams(filters);
-    const url = `http://localhost:5000/api/event/getEvents?${params.toString()}`;
+    const url = `https://eventify-ymsb.vercel.app/api/event/getEvents?${params.toString()}`;
 
     try {
       const response = await fetch(url, {
@@ -118,7 +118,7 @@ const useEventStore = create((set) => ({
 
   //   const fetchNextChunk = async () => {
   //     const params = new URLSearchParams({ ...filters, page: currentPage, limit });
-  //     const url = `http://localhost:5000/api/event/getEvents?${params.toString()}`;
+  //     const url = `https://eventify-ymsb.vercel.app/api/event/getEvents?${params.toString()}`;
 
   //     try {
   //       const response = await fetch(url, {
