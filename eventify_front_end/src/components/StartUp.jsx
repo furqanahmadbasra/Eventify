@@ -28,7 +28,7 @@ function Startup() {
   useEffect(() => {
     const fetchProfiles = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/user/get_investors_advisors_profiles', {
+        const response = await fetch('https://eventify-ymsb.vercel.app/api/user/get_investors_advisors_profiles', {
           method: 'GET',  // or 'PUT' if updating
           headers: {
             "Content-Type": "application/json", // This tells the server we're sending JSON
@@ -55,7 +55,7 @@ function Startup() {
     const fetchStartups_OF_USER = async () => {
 
       try {
-        const response = await fetch('http://localhost:5000/api/startup/fetchStartups_OF_USER', {
+        const response = await fetch('https://eventify-ymsb.vercel.app/api/startup/fetchStartups_OF_USER', {
           method: 'GET',  // or 'PUT' if updating
           headers: {
             "Content-Type": "application/json", // This tells the server we're sending JSON
@@ -83,7 +83,7 @@ function Startup() {
     const fetchALLSTARTUPS = async () => {
 
       try {
-        const response = await fetch('http://localhost:5000/api/startup/fetchOtherStartups', {
+        const response = await fetch('https://eventify-ymsb.vercel.app/api/startup/fetchOtherStartups', {
           method: 'GET',
           headers: {
             "Content-Type": "application/json", // This tells the server we're sending JSON
